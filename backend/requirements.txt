@@ -1,0 +1,25 @@
+fastapi
+uvicorn
+python-dotenv
+
+langchain
+langchain-community
+langchain-core
+langchain-groq
+# langchain-openai
+
+sentence-transformers
+transformers
+torch
+
+faiss-cpu
+
+pydantic
+requests
+tqdm
+numpy
+# scikit-learn
+python-multipart
+
+PyMuPDF
+pypdf

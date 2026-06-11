@@ -1,0 +1,25 @@
+# backend files
+backend/__pycache__/
+backend/src/__pycache__/
+# backend/src/.ipynb_checkpoints/
+backend/.env
+backend/data/
+
+# Notebooks
+backend/notebooks/
+
+
+# Vitual env
+venv/
+.venv/
+
+test/
+.test/
+
+new_test/
+.new_test/
+
+# VS Code files
+.vscode/
+
+

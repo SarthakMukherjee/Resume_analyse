@@ -1,5 +1,4 @@
 ---
-
 title: Resume Analyzer
 emoji: 📄
 colorFrom: blue

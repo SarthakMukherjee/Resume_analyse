@@ -7,7 +7,7 @@ colorTo: green
 sdk: docker
 app_port: 7860
 pinned: false
--------------
+---
 
 # 🚀RAG Based Resume Analyzing System
 An AI-powered system that analyzes resumes against job descriptions using **Retrieval-Augmented Generation (RAG)** to provide **match scores, skill gaps, and actionable improvement suggestions.**

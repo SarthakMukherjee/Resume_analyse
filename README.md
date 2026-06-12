@@ -113,7 +113,7 @@ GROQ_API_KEY = your_api_key
 ```
 uvicorn main:app --reload
 ```
-Backend runs at:
+Backend runs at (local environment):
 ```
 http://127.0.0.1:8000
 ```

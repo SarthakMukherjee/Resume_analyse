@@ -95,7 +95,7 @@ frontend/
   - Python
   - Uvicorn
 - AI/ML
-  - OpenAI Embeddings (`text-embedding-3-small`)
+  - HuggingFace Embeddings (`sentence-transformers/all-MiniLM-L6-v2`)
   - Groq
   - LangChain
 - Vector DB
@@ -108,8 +108,8 @@ frontend/
 ## 🚀 Getting Started
 ### 1️⃣ Clone Repo
 ```
-git clone https://github.com/your-username/resume-analyzer.git
-cd resume-analyzer
+git clone https://github.com/SarthakMukherjee/Resume_analyse.git
+cd Resume_analyze
 ```
 ### 2️⃣ Setup Backend
 ```
@@ -120,14 +120,13 @@ pip install -r requirements.txt
 ```
 ### 3️⃣ Setup Environment Variables
 ```
-OPENAI_API_KEY = your_api_key
 GROQ_API_KEY = your_api_key
 ```
 ### 4️⃣ 🏃 Run backend
 ```
 uvicorn main:app --reload
 ```
-Backend runs at:
+Backend runs at (local environment):
 ```
 http://127.0.0.1:8000
 ```
@@ -138,19 +137,56 @@ frontend/index.html
 OR use Live Server (Recommended)
 
 ## Deployment
+<<<<<<< HEAD
 ### Backend(HuggingFace)
+=======
+### Backend(Hugging Face Spaces - Docker)
+>>>>>>> fd605c86cc0aeaffb20310df4c4078fb80a1eec8
 Start command:
 ```
 cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
 ```
 ENV variables
-- `OPENAI_API_KEY`
 - `GROQ_API_KEY`
+
+**Dockerfile**
+The project includes a `Dockerfile` at the root level which handles:
+- Installing Python dependencies
+- Setting up the application environment
+- Starting the FastAPI server
+
+**Application Startup**
+The FastAPI application is served using Uvicorn: `uvicorn main:app --host 0.0.0.0 --port 7860`
+
+Hugging Face Spaces requires applications to listen on port `7860`.
+
+**Environment Variables**
+Configure the following secrets in the Hugging Face Space settings:
+- `GROQ_API_KEY`
+
+Navigate to:
+Space Settings → Repository Secrets 
+and add the required environment variables.
+
+**Deployment Steps**
+- Create a new Hugging Face Space.
+- Select Docker as the Space SDK.
+- Upload the project files or connect te repository.
+- Ensure the following files are present:
+  - `Dockerfile`
+  - `requirements.txt`
+  - `main.py`
+  - `backend/`
+- Add the required environment variables in Space Secrets.
+- Trigger a rebuild or Factory Reboot.
+
+The application will be available at:
+`https://hugingface.com/spaces/<username>/<space-name>`
   
 ### Frontend
 Update in `config.js`:
 ```
-API_BASE_URL: "https://your-render-url.onrender.com"
+API_BASE_URL: https://hugingface.com/spaces/<username>/<space-name>
 ```
 
 ## API Endpoints

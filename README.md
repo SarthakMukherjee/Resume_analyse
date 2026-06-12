@@ -1,4 +1,4 @@
----
+<!-- ---
 
 title: Resume Analyzer
 emoji: 📄
@@ -7,7 +7,7 @@ colorTo: green
 sdk: docker
 app_port: 7860
 pinned: false
--------------
+------------- -->
 
 # 🚀RAG Based Resume Analyzing System
 An AI-powered system that analyzes resumes against job descriptions using **Retrieval-Augmented Generation (RAG)** to provide **match scores, skill gaps, and actionable improvement suggestions.**
@@ -137,11 +137,7 @@ frontend/index.html
 OR use Live Server (Recommended)
 
 ## Deployment
-<<<<<<< HEAD
-### Backend(HuggingFace)
-=======
 ### Backend(Hugging Face Spaces - Docker)
->>>>>>> fd605c86cc0aeaffb20310df4c4078fb80a1eec8
 Start command:
 ```
 cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT

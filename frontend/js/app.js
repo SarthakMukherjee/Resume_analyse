@@ -2,8 +2,8 @@
 // Configuration
 // ================================
 const CONFIG = {
-  // API_BASE_URL: "https://sarthakve-resume-analyzer.hf.space",
-  API_BASE_URL: "http://127.0.0.1:8000",
+  API_BASE_URL: "https://sarthakve-resume-analyzer.hf.space",
+  // API_BASE_URL: "http://127.0.0.1:8000",
   // API_BASE_URL: window.APP_CONFIG,
   MAX_FILE_SIZE: 10 * 1024 * 1024, // 10MB
   LOADING_MESSAGES: [

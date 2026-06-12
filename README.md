@@ -1,3 +1,14 @@
+---
+
+title: Resume Analyzer
+emoji: 📄
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+pinned: false
+-------------
+
 # 🚀RAG Based Resume Analyzing System
 An AI-powered system that analyzes resumes against job descriptions using **Retrieval-Augmented Generation (RAG)** to provide **match scores, skill gaps, and actionable improvement suggestions.**
 
@@ -47,7 +58,9 @@ RAG Pipeline (pipeline.py)
         └── LLM (Groq)
         │
         ▼
-JSON Response → Frontend UI```Frontend (HTML/CSS/JS)
+JSON Response → Frontend UI
+
+Frontend (HTML/CSS/JS)
 ```
 
 ## 📂 Project Structure
@@ -125,7 +138,7 @@ frontend/index.html
 OR use Live Server (Recommended)
 
 ## Deployment
-### Backend(RENDER)
+### Backend(HuggingFace)
 Start command:
 ```
 cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
@@ -172,6 +185,6 @@ POST /analyze-text
     "Business acumen: Developing a deeper understanding of business operations, ..."
   ],
   "raw_analysis": "Match Score: 92\n\nThe candidate, James Dawson, has a strong background in data visualization, with experience in tools ....",
-  "error": null
+  "error": null   
 }
 ```

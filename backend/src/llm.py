@@ -16,7 +16,7 @@ def generate_response(llm, resume_text, retrieved_docs):
     context = "\n".join([doc.page_content for doc in retrieved_docs])
 
     prompt = f"""
-    You are an AI resumse analyzer.PermissionError
+    You are an AI resumse analyzer.
 
     Resume:
     {resume_text}
@@ -24,11 +24,25 @@ def generate_response(llm, resume_text, retrieved_docs):
     Job Requirements:
     {context}
 
-    Tasks:
-    1. Give a match score (0-100)
-    2. Identify missing skills
-    3. Suggest improvements
-    4. Recommend additional skills
+    Instructions:
+
+Evaluate the candidate against the job requirements using the following criteria:
+
+1. Technical Skills Match (60%)
+   - Compare required technical skills against the resume.
+   - Missing required skills should significantly reduce the score.
+   - Good-to-have skills should have minimal impact.
+
+2. Experience Match (20%)
+   - Compare years of experience and relevant work history.
+
+3. Leadership & Communication (20%)
+   - Evaluate project leadership, stakeholder management, mentoring, and client interaction.
+
+Scoring Rules:
+- If more than 40% of required technical skills are missing, the score should not exceed 75.
+- If more than 60% of required technical skills are missing, the score should not exceed 65.
+- Do not reward experience or leadership enough to compensate for major technical gaps.
 
     """
 

@@ -23,3 +23,4 @@ python-multipart
 
 PyMuPDF
 pypdf
+docx2txt

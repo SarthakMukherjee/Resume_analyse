@@ -137,12 +137,14 @@ async def analyze_resume(
     Returns:
         AnalysisResponse with match score, missing skills, and recommendations
     """
+
+    resume_extension=Path(resume.filename).suffix.lower()
     
     # Validate file types
-    if not resume.filename.endswith('.pdf'):
+    if resume_extension not in [".pdf", ".docx"]:
         raise HTTPException(
             status_code=400, 
-            detail="Resume must be a PDF file"
+            detail="Resume must be a PDF or DOCX file"
         )
     
     if not (job_description.filename.endswith('.txt') or job_description.filename.endswith('.pdf')):
@@ -156,7 +158,7 @@ async def analyze_resume(
     
     try:
         # Save uploaded files
-        resume_path = Path(temp_dir) / "resume.pdf"
+        resume_path = Path(temp_dir) / f"resume.{resume_extension}"
         jd_path = Path(temp_dir) / f"job_description{Path(job_description.filename).suffix}"
         
         save_upload_file(resume, resume_path)
@@ -203,12 +205,13 @@ async def analyze_resume_with_text_jd(
     Returns:
         AnalysisResponse with match score, missing skills, and recommendations
     """
-    
+    resume_extension=Path(resume.filename).suffix.lower()
+
     # Validate file type
-    if not resume.filename.endswith('.pdf'):
+    if resume_extension not in [".pdf", ".docx"]:
         raise HTTPException(
             status_code=400,
-            detail="Resume must be a PDF file"
+            detail="Resume must be a PDF or DOCX file"
         )
     
     # Create temporary directory
@@ -216,7 +219,7 @@ async def analyze_resume_with_text_jd(
     
     try:
         # Save resume
-        resume_path = Path(temp_dir) / "resume.pdf"
+        resume_path = Path(temp_dir) / f"resume{resume_extension}"
         save_upload_file(resume, resume_path)
         
         # Save job description text to file

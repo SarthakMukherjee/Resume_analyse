@@ -131,10 +131,43 @@ function handleDrop(e) {
 
 function validateAndSetFile(file) {
   // Validate file type
-  if (file.type !== "application/pdf") {
-    showError("Please upload a PDF file only.");
+//   if (file.type !== "application/pdf") {
+//     showError("Please upload a PDF file only.");
+//     return;
+//   }
+
+//   // Validate file size
+//   if (file.size > CONFIG.MAX_FILE_SIZE) {
+//     showError(
+//       `File size must be less than ${CONFIG.MAX_FILE_SIZE / 1024 / 1024}MB.`,
+//     );
+//     return;
+//   }
+
+//   // Set file
+//   resumeFile = file;
+
+//   // Update UI
+//   elements.resumeFileName.textContent = file.name;
+//   elements.resumeFileSize.textContent = formatFileSize(file.size);
+//   elements.resumeUploadArea.style.display = "none";
+//   elements.resumePreview.style.display = "flex";
+// }
+
+
+// ===== CHANGED FOR PDF + DOCX SUPPORT =====
+
+  const fileName = file.name.toLowerCase();
+
+  const isPdf = fileName.endsWith(".pdf");
+  const isDocx = fileName.endsWith(".docx");
+
+  if (!isPdf && !isDocx) {
+    showError("Please upload a PDF or DOCX resume.");
     return;
   }
+
+  // ===== END CHANGE =====
 
   // Validate file size
   if (file.size > CONFIG.MAX_FILE_SIZE) {
@@ -185,7 +218,7 @@ async function handleFormSubmit(e) {
 
   // Validate
   if (!resumeFile) {
-    showError("Please upload a resume PDF file.");
+    showError("Please upload a resume PDF or DOCX file.");
     return;
   }
 

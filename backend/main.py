@@ -106,9 +106,6 @@ def parse_llm_response(response_text: str) -> dict:
 
 # API Endpoints
 
-@app.get("/ping")
-async def keep_alive():
-    return {"status": "healthy", "message": "Hugging Face Space is awake!"}
 
 @app.get("/", response_model=HealthResponse)
 async def root():

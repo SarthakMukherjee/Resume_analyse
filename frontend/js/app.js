@@ -131,31 +131,31 @@ function handleDrop(e) {
 
 function validateAndSetFile(file) {
   // Validate file type
-//   if (file.type !== "application/pdf") {
-//     showError("Please upload a PDF file only.");
-//     return;
-//   }
+  //   if (file.type !== "application/pdf") {
+  //     showError("Please upload a PDF file only.");
+  //     return;
+  //   }
 
-//   // Validate file size
-//   if (file.size > CONFIG.MAX_FILE_SIZE) {
-//     showError(
-//       `File size must be less than ${CONFIG.MAX_FILE_SIZE / 1024 / 1024}MB.`,
-//     );
-//     return;
-//   }
+  //   // Validate file size
+  //   if (file.size > CONFIG.MAX_FILE_SIZE) {
+  //     showError(
+  //       `File size must be less than ${CONFIG.MAX_FILE_SIZE / 1024 / 1024}MB.`,
+  //     );
+  //     return;
+  //   }
 
-//   // Set file
-//   resumeFile = file;
+  //   // Set file
+  //   resumeFile = file;
 
-//   // Update UI
-//   elements.resumeFileName.textContent = file.name;
-//   elements.resumeFileSize.textContent = formatFileSize(file.size);
-//   elements.resumeUploadArea.style.display = "none";
-//   elements.resumePreview.style.display = "flex";
-// }
+  //   // Update UI
+  //   elements.resumeFileName.textContent = file.name;
+  //   elements.resumeFileSize.textContent = formatFileSize(file.size);
+  //   elements.resumeUploadArea.style.display = "none";
+  //   elements.resumePreview.style.display = "flex";
+  // }
 
 
-// ===== CHANGED FOR PDF + DOCX SUPPORT =====
+  // ===== CHANGED FOR PDF + DOCX SUPPORT =====
 
   const fileName = file.name.toLowerCase();
 
@@ -257,17 +257,17 @@ async function handleFormSubmit(e) {
     // following added on 16-04-26
     // const response = await fetch(...);
 
-  // if (!response.ok) {
-  //   const text = await response.text();
-  //   throw new Error(text || "API error");
-  // }
+    // if (!response.ok) {
+    //   const text = await response.text();
+    //   throw new Error(text || "API error");
+    // }
 
-  // let data;
-  // try {
-  //   data = await response.json();
-  // } catch (err) {
-  //   throw new Error("Invalid JSON response from server");
-  // }
+    // let data;
+    // try {
+    //   data = await response.json();
+    // } catch (err) {
+    //   throw new Error("Invalid JSON response from server");
+    // }
 
     // Hide loading
     hideLoading();
@@ -285,7 +285,7 @@ async function handleFormSubmit(e) {
     if (error.name === "TypeError" && error.message.includes("fetch")) {
       showError(
         "Unable to connect to the API server. Please ensure the backend is running on " +
-          CONFIG.API_BASE_URL,
+        CONFIG.API_BASE_URL,
       );
     } else {
       showError("An unexpected error occurred: " + error.message);

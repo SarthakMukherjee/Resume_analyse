@@ -25,5 +25,12 @@ def load_resume(file_path):
         raise ValueError(f"Unsupported resume format: {extension}. Supported are .pdf and .docx only.")
     
     return loader.load()
+    
+    # # Loop through all pages and print their text content
+    # for doc in documents:
+    #     print(doc.page_content)
+    #     print("-" * 50) # Just a separator line between pages
+        
+    # return documents
 
 

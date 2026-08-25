@@ -8,4 +8,4 @@ def save_vector_store(vectorstore, path="faiss_index"):
     vectorstore.save_local(path)
 
 def load_vector_store(path, embedding_model):
-    return FAISS.load_local(path, embedding_model)
+    return FAISS.load_local(path, embedding_model) 

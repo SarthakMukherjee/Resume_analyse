@@ -1,16 +1,16 @@
 from typing import get_origin
-from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
-groq_api_key = os.getenv("GROQ_API_KEY")
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 def get_llm():
-    return ChatGroq(
-        model="openai/gpt-oss-120b",
+    return ChatOpenAI(
+        model="gpt-4o-mini",
         temperature=0.3,
-        api_key=groq_api_key
+        api_key=openai_api_key
     )
 
 def generate_response(llm, resume_text, retrieved_docs):

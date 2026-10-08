@@ -10,12 +10,14 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 def get_llm():
     provider = os.getenv("LLM_PROVIDER")
     if provider == "openai":
+        print("Using OpenAI")
         return ChatOpenAI(
             model="gpt-4o-mini",
             temperature=0.3,
             api_key=openai_api_key
         )
     elif provider == "groq":
+        print("Using GROQ")
         return ChatGroq(
             model="openai/gpt-oss-120b",
             temperature=0.3,

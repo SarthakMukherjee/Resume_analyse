@@ -1,5 +1,6 @@
 from typing import get_origin
 from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 import os
 
@@ -7,11 +8,22 @@ load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 def get_llm():
-    return ChatOpenAI(
-        model="gpt-4o-mini",
-        temperature=0.3,
-        api_key=openai_api_key
-    )
+    provider = os.getenv("LLM_PROVIDER")
+    if provider == "openai":
+        return ChatOpenAI(
+            model="gpt-4o-mini",
+            temperature=0.3,
+            api_key=openai_api_key
+        )
+    elif provider == "groq":
+        return ChatGroq(
+            model="openai/gpt-oss-120b",
+            temperature=0.3,
+            api_key=os.getenv("GROQ_API_KEY")
+        )
+    else:
+        raise ValueError(f"Invalid LLM provider: {provider}")
+
 
 def generate_response(llm, resume_text, retrieved_docs):
     context = "\n".join([doc.page_content for doc in retrieved_docs])

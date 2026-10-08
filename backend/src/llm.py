@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-openai_api_key = os.getenv("OPENAI_API_KEY")
+# openai_api_key = os.getenv("OPENAI_API_KEY")
 
 def get_llm():
     provider = os.getenv("LLM_PROVIDER")
@@ -14,7 +14,7 @@ def get_llm():
         return ChatOpenAI(
             model="gpt-4o-mini",
             temperature=0.3,
-            api_key=openai_api_key
+            api_key=os.getenv("OPENAI_API_KEY")
         )
     elif provider == "groq":
         print("Using GROQ")

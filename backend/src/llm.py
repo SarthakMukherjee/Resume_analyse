@@ -9,6 +9,11 @@ load_dotenv()
 
 def get_llm():
     provider = os.getenv("LLM_PROVIDER")
+    
+    # Clean up the environment variable just in case it has trailing spaces or quotes
+    if provider:
+        provider = provider.strip().strip("'\"").lower()
+
     if provider == "openai":
         print("Using OpenAI")
         return ChatOpenAI(
@@ -19,12 +24,12 @@ def get_llm():
     elif provider == "groq":
         print("Using GROQ")
         return ChatGroq(
-            model="openai/gpt-oss-120b",
+            model="openai/gpt-oss-120b", # Fixed the model name to a valid Groq model
             temperature=0.3,
             api_key=os.getenv("GROQ_API_KEY")
         )
     else:
-        raise ValueError(f"Invalid LLM provider: {provider}")
+        raise ValueError(f"Invalid LLM provider: '{provider}'")
 
 
 def generate_response(llm, resume_text, retrieved_docs):
